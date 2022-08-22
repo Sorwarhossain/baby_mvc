@@ -1,0 +1,14 @@
+{
+    "name": "shoss/baby_mvc",
+    "autoload": {
+        "psr-4": {
+            "App\\": "./"
+        }
+    },
+    "authors": [
+        {
+            "name": "Saorar Hossain"
+        }
+    ],
+    "require": {}
+}
