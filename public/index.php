@@ -5,6 +5,9 @@ use App\Core\Application;
 use App\Controllers\SiteController;
 use App\Controllers\AuthController;
 
+$dotenv = Dotenv\Dotenv::createImmutable(dirname(__DIR__));
+$dotenv->load();
+
 $app = new Application(dirname(__DIR__));
 
 $siteController = new SiteController();
