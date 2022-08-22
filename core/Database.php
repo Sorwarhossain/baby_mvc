@@ -4,6 +4,7 @@ namespace App\Core;
 
 class Database
 {
+    // Another commit
 
     public $pdo;
 
