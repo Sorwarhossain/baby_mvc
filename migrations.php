@@ -6,4 +6,4 @@ $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
 $dotenv->load();
 
 $app = new App\Core\Application(__DIR__);
-$app->database->applyMigrations();
+$app->database->applyMigrations($app::$ROO_DIR);

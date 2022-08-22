@@ -11,20 +11,20 @@ class Database
         $this->pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
     }
 
-    public function applyMigrations()
+    public function applyMigrations($rootDir)
     {
         $this->createMigrationsTable();
         $appliedMigrations = $this->getAppliedMigrations();
 
         $newMigrations = [];
-        $files = scandir(Application::$ROOT_DIR . '/migrations');
+        $files = scandir($rootDir . '/migrations');
         $toApplyMigrations = array_diff($files, $appliedMigrations);
         foreach ($toApplyMigrations as $migration) {
             if ($migration === '.' || $migration === '..') {
                 continue;
             }
 
-            require_once Application::$ROOT_DIR . '/migrations/' . $migration;
+            require_once $rootDir . '/migrations/' . $migration;
             $className = pathinfo($migration, PATHINFO_FILENAME);
             $instance = new $className();
             $this->log("Applying migration $migration");
@@ -38,6 +38,25 @@ class Database
         } else {
             $this->log("There are no migrations to apply");
         }
+    }
+
+    protected function saveMigrations(array $newMigrations)
+    {
+        $str = implode(',', array_map(fn($m) => "('$m')", $newMigrations));
+        $statement = $this->pdo->prepare("INSERT INTO migrations (migration) VALUES 
+            $str
+        ");
+        $statement->execute();
+    }
+
+    public function prepare($sql): \PDOStatement
+    {
+        return $this->pdo->prepare($sql);
+    }
+
+    private function log($message)
+    {
+        echo "[" . date("Y-m-d H:i:s") . "] - " . $message . PHP_EOL;
     }
 
     public function createMigrationsTable()
