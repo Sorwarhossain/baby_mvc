@@ -49,6 +49,10 @@ abstract class Model
                 }
 
                 if($ruleName === self::RULE_UNIQUE){
+                    $className = $rule['class'];
+                    $uniqueAttr = $rule['attribute'] ?? $attribute;
+                    $tableName = $className::tableName();
+
                     
                 }
             }
