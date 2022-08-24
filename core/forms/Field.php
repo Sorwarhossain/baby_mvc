@@ -10,7 +10,7 @@ class Field
     public $attribute;
     public $fieldType;
 
-    public function __construct(Model $model, string $attribute)
+    public function __construct(Model $model, string $attribute, string $label)
     {
         $this->model =$model;
         $this->attribute = $attribute;
