@@ -36,6 +36,24 @@
         </div>
     </nav>
 
+    <?php
+    $success = \App\Core\Application::$app->session->getFlash('success');
+    ?>
+    <?php if($success): ?>
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <strong>Congratulations!</strong> <?php echo $success; ?>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <?php endif; ?>
+
     {{content}}
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
