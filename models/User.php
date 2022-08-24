@@ -28,14 +28,43 @@ class User extends DBModel
     public function rules(): array
     {
         return [
-            'firstname' => [self::RULE_REQUIRED],
-            'lastname' => [self::RULE_REQUIRED],
-            'email' => [self::RULE_EMAIL, [
-                self::RULE_UNIQUE,
-                'class' => self::class
-            ]],
-            'password' => [[self::RULE_MIN, 'min' => 3]],
-            'confirmPassword' => [[self::RULE_MATCH, 'match' => 'password']]
+            'firstname' => [
+                [
+                    'rule' => self::RULE_REQUIRED,
+                    'message' => 'Firstname is required'
+                ]
+            ],
+            'lastname' => [
+                [
+                    'rule' => self::RULE_REQUIRED,
+                    'message' => 'Lastname is required'
+                ]
+            ],
+            'email' => [
+                [
+                   'rule' => self::RULE_EMAIL,
+                   'message' => 'Pleaes enter a valid email'
+                ],
+                [
+                    'rule' => self::RULE_UNIQUE,
+                    'message' => 'This email is already registered',
+                    'class' => self::class
+                ]
+            ],
+            'password' => [
+                [
+                    'rule' => self::RULE_MIN,
+                    'message' => 'Minimum password length is 3',
+                    'min' => 3
+                ]
+            ],
+            'confirmPassword' => [
+                [
+                    'rule' => self::RULE_MATCH,
+                    'message' => 'Password didn\'t matched',
+                    'match' => 'password'
+                ]
+            ]
         ];
     }
 

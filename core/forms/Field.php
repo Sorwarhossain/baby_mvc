@@ -8,12 +8,14 @@ class Field
 {
     public Model $model;
     public $attribute;
+    public $label;
     public $fieldType;
 
-    public function __construct(Model $model, string $attribute)
+    public function __construct(Model $model, string $attribute, string $label = null)
     {
         $this->model =$model;
         $this->attribute = $attribute;
+        $this->label = $label ?? $attribute;
         $this->fieldType = 'text';
     }
 
@@ -26,7 +28,7 @@ class Field
 
         $output = '';
         $output .= '<div class="form-group">';
-        $output .= '<label for="'. $this->attribute .'" class="form-label">'. $this->attribute .'</label>';
+        $output .= '<label for="'. $this->attribute .'" class="form-label">'. $this->label .'</label>';
         $output .= '<input type="'. $this->fieldType .'" value="'. $this->model->{$this->attribute} .'" class="form-control '. $errorClass .'" id="'. $this->attribute .'" name="'. $this->attribute .'">';
         $output .= '<div class="invalid-feedback">'. $errorMessage .'</div>';
         $output .= '</div>';

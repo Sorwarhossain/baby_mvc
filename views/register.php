@@ -4,11 +4,11 @@
             <div class="col">
                 <h1>Register Your Account</h1>
                 <?php $form = \App\Core\Forms\Form::begin('', 'post'); ?>
-                    <?php echo $form->field($model, 'firstname'); ?>
-                    <?php echo $form->field($model, 'lastname'); ?>
-                    <?php echo $form->field($model, 'email')->fieldType('email'); ?>
-                    <?php echo $form->field($model, 'password')->fieldType('password'); ?>
-                    <?php echo $form->field($model, 'confirmPassword')->fieldType('password'); ?>
+                    <?php echo $form->field($model, 'firstname', 'First Name'); ?>
+                    <?php echo $form->field($model, 'lastname', 'Last Name'); ?>
+                    <?php echo $form->field($model, 'email', 'Email')->fieldType('email'); ?>
+                    <?php echo $form->field($model, 'password', 'Password')->fieldType('password'); ?>
+                    <?php echo $form->field($model, 'confirmPassword', 'Confirm Password')->fieldType('password'); ?>
                     <div class="col-12">
                         <button type="submit" class="btn btn-primary">Register</button>
                     </div>
