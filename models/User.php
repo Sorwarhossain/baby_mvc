@@ -25,6 +25,10 @@ class User extends DBModel
         return parent::save();
     }
 
+    public static function primaryKey(): string
+    {
+        return 'id';
+    }
     public function rules(): array
     {
         return [
@@ -68,7 +72,7 @@ class User extends DBModel
         ];
     }
 
-    public function tableName()
+    public static function tableName()
     {
         return 'users';
     }
