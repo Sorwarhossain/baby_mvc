@@ -25,6 +25,10 @@ class User extends DBModel
         return parent::save();
     }
 
+    public static function primaryKey(): string
+    {
+        return 'id';
+    }
     public function rules(): array
     {
         return [

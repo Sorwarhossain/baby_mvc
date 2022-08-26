@@ -25,12 +25,20 @@
                 </ul>
 
                 <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="/login">Login</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/register">Register</a>
-                    </li>
+                    <?php if(\App\Core\Application::isGuest()) : ?>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="/login">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/register">Register</a>
+                        </li>
+                    <?php else: ?>
+                        <li class="nav-item">
+                            Welcome <?php echo \App\Core\Application::$app->user->getDisplayName(); ?> (<a class="nav-link active" href="/login">Logout</a>)
+                        </li>
+                    <?php endif; ?>
+
+
                 </ul>
             </div>
         </div>

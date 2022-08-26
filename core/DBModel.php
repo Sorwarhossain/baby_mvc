@@ -6,6 +6,7 @@ abstract class DBModel extends Model
 {
     abstract public static function tableName();
     abstract public function attributes(): array;
+    abstract public static function primaryKey(): string;
 
     public function save()
     {
