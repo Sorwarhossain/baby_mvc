@@ -29,5 +29,8 @@ $app->router->post('/register', [$authController, 'register']);
 // This is for test
 $app->router->get('/logout', [$authController, 'logout']);
 
+// Profile page
+$app->router->get('/profile', [$authController, 'profile']);
+
 $app->run();
 

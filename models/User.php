@@ -91,6 +91,6 @@ class User extends UserModel
 
     public function getDisplayName()
     {
-        return $this->firstname . ' ' . $this->lastname;
+        return '<a class="nav-link active" href="/logout">Logout</a>';
     }
 }
