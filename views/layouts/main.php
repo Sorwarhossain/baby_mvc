@@ -34,8 +34,9 @@
                         </li>
                     <?php else: ?>
                         <li class="nav-item">
-                            Welcome <?php echo \App\Core\Application::$app->user->getDisplayName(); ?> (<a class="nav-link active" href="/login">Logout</a>)
+                            <a class="nav-link active" href="/profile">Profile</a>
                         </li>
+                        <li class="nav-item"><?php echo \App\Core\Application::$app->user->getDisplayName(); ?></li>
                     <?php endif; ?>
 
 
