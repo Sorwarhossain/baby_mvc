@@ -68,7 +68,7 @@ class User extends DBModel
         ];
     }
 
-    public function tableName()
+    public static function tableName()
     {
         return 'users';
     }

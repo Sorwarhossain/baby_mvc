@@ -32,19 +32,19 @@ abstract class Model
                 $ruleName = $rule['rule'];
 
                 if($ruleName === self::RULE_REQUIRED && !$value){
-                    $this->addError($attribute, $rule['message']);
+                    $this->addFormError($attribute, $rule['message']);
                 }
 
                 if($ruleName === self::RULE_EMAIL && !filter_var($value, FILTER_VALIDATE_EMAIL)){
-                    $this->addError($attribute, $rule['message']);
+                    $this->addFormError($attribute, $rule['message']);
                 }
 
                 if($ruleName === self::RULE_MIN && strlen($value) < $rule['min']){
-                    $this->addError($attribute, $rule['message']);
+                    $this->addFormError($attribute, $rule['message']);
                 }
 
                 if($ruleName === self::RULE_MATCH && $value !== $this->{$rule['match']}){
-                    $this->addError($attribute, $rule['message']);
+                    $this->addFormError($attribute, $rule['message']);
                 }
 
                 if($ruleName === self::RULE_UNIQUE){
@@ -57,7 +57,7 @@ abstract class Model
                     $statement->execute();
                     $record = $statement->fetchObject();
                     if($record){
-                        $this->addError($attribute, $rule['message']);
+                        $this->addFormError($attribute, $rule['message']);
                     }
                 }
             }
@@ -66,7 +66,11 @@ abstract class Model
         return empty($this->errors);
     }
 
-    private function addError($attibute, $message){
+    public function addError($attibute, $message){
+        $this->errors[$attibute] = $message;
+    }
+
+    private function addFormError($attibute, $message){
         $this->errors[$attibute] = $message;
     }
 
