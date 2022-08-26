@@ -2,7 +2,7 @@
 
 namespace App\Core;
 
-class UserModel
+abstract class UserModel extends DBModel
 {
-
+    abstract public function getDisplayName();
 }

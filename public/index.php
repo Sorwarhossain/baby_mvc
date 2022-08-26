@@ -26,5 +26,8 @@ $app->router->post('/login', [$authController, 'login']);
 $app->router->get('/register', [$authController, 'register']);
 $app->router->post('/register', [$authController, 'register']);
 
+// This is for test
+$app->router->get('/logout', [$authController, 'login']);
+
 $app->run();
 

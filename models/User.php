@@ -3,8 +3,9 @@
 namespace App\Models;
 
 use App\Core\DBModel;
+use App\Core\UserModel;
 
-class User extends DBModel
+class User extends UserModel
 {
     const STATUS_INACTIVE = 0;
     const STATUS_ACTIVE = 1;
@@ -86,5 +87,10 @@ class User extends DBModel
             'status',
             'password'
         ];
+    }
+
+    public function getDisplayName()
+    {
+        return $this->firstname . ' ' . $this->lastname;
     }
 }
