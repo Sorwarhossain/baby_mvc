@@ -42,7 +42,9 @@ class Application {
         try {
             echo $this->router->resolve();
         } catch (\Exception $e){
-            echo '111';
+            echo $this->router->renderView('_errors', [
+                'exception' => $e,
+            ]);
         }
 
     }
