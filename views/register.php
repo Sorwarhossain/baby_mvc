@@ -1,3 +1,6 @@
+<?php
+/** @var $model App\Models\User */
+?>
 <section class="contact py-5">
     <div class="container">
         <div class="row">
